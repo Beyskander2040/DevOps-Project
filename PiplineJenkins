@@ -5,15 +5,13 @@ pipeline {
         maven 'M2_HOME'
     }
 
-    environment {
-        GITHUB_TOKEN = credentials('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')
-    }
+
 
     stages {
         stage('Checkout Git repository') {
             steps {
                 echo 'Pulling'
-                git branch: 'skander', credentialsId: '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', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
+                git branch: 'skander', credentialsId: '50149f68-5226-4b9f-acb4-c0b99e149e50', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
             }
         }
     }
