@@ -14,5 +14,11 @@ pipeline {
                 git branch: 'skander', credentialsId: '50149f68-5226-4b9f-acb4-c0b99e149e50', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
             }
         }
-    }
+    }stage('Maven Clean Compile') {
+                 steps {
+                     sh 'mvn clean'
+                     echo 'Running Maven Compile'
+                     sh 'mvn compile'
+                 }
+             }
 }
