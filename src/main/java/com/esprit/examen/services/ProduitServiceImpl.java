@@ -47,9 +47,19 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public Produit updateProduit(Produit p) {
-		return produitRepository.save(p);
+	public Produit updateProduit(Produit updatedProduit) {
+		Produit existingProduit = produitRepository.findById(updatedProduit.getIdProduit()).orElse(null);
+		if (existingProduit != null) {
+			existingProduit.setLibelleProduit(updatedProduit.getLibelleProduit());
+			existingProduit.setPrix(updatedProduit.getPrix());
+
+			return produitRepository.save(existingProduit);
+		} else {
+			// Gérer le cas où le produit n'est pas trouvé
+			return null;
+		}
 	}
+
 
 	@Override
 	public Produit retrieveProduit(Long produitId) {
@@ -66,6 +76,7 @@ public class ProduitServiceImpl implements IProduitService {
 		produitRepository.save(produit);
 
 	}
+
 
 
 }
