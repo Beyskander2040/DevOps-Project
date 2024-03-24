@@ -28,14 +28,13 @@ stage('Tests - JUnit/Mockito') {
             }
         }
 
-      stage('SonarQube Analysis') {
-          steps {
-              withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
-                  sh 'mvn sonar:sonar -Dsonar.branch.name=skander -Dsonar.login=$SONAR_TOKEN'
-              }
-          }
-      }
-
+         stage('SonarQube Analysis') {
+                    steps {
+                        withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
+                            sh 'mvn sonar:sonar -Dsonar.token=$SONAR_TOKEN'
+                        }
+                                }
+                }
 
              }
 }
