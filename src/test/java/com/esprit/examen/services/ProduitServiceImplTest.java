@@ -20,7 +20,6 @@ import com.esprit.examen.services.ProduitServiceImpl;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(MockitoJUnitRunner.class)
-
 @SpringBootTest
 public class ProduitServiceImplTest {
 
@@ -64,7 +63,7 @@ public class ProduitServiceImplTest {
         verify(produitRepository, times(1)).deleteById(1L);
     }
 
-//    @Test
+    //    @Test
 //    public void testUpdateProduit() {
 //        Produit produit = new Produit();
 //        produit.setIdProduit(1L);
