@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > StockServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.services</a>
+</div>
+
+<h1>Coverage Summary for Class: StockServiceImpl (com.esprit.examen.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StockServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.services;
+&nbsp;
+&nbsp;import java.text.SimpleDateFormat;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.List;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import com.esprit.examen.entities.Stock;
+&nbsp;import com.esprit.examen.repositories.StockRepository;
+&nbsp;import lombok.extern.slf4j.Slf4j;
+&nbsp;
+&nbsp;@Service
+<b class="nc">&nbsp;@Slf4j</b>
+<b class="nc">&nbsp;public class StockServiceImpl implements IStockService {</b>
+&nbsp;
+&nbsp;	@Autowired
+&nbsp;	StockRepository stockRepository;
+&nbsp;
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public List&lt;Stock&gt; retrieveAllStocks() {
+&nbsp;		// récuperer la date à l&#39;instant t1
+<b class="nc">&nbsp;		log.info(&quot;In method retrieveAllStocks&quot;);</b>
+<b class="nc">&nbsp;		List&lt;Stock&gt; stocks = (List&lt;Stock&gt;) stockRepository.findAll();</b>
+<b class="nc">&nbsp;		for (Stock stock : stocks) {</b>
+<b class="nc">&nbsp;			log.info(&quot; Stock : &quot; + stock);</b>
+<b class="nc">&nbsp;		}</b>
+<b class="nc">&nbsp;		log.info(&quot;out of method retrieveAllStocks&quot;);</b>
+&nbsp;		// récuperer la date à l&#39;instant t2
+&nbsp;		// temps execution = t2 - t1
+<b class="nc">&nbsp;		return stocks;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Stock addStock(Stock s) {
+&nbsp;		// récuperer la date à l&#39;instant t1
+<b class="nc">&nbsp;		log.info(&quot;In method addStock&quot;);</b>
+<b class="nc">&nbsp;		return stockRepository.save(s);</b>
+&nbsp;		
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void deleteStock(Long stockId) {
+<b class="nc">&nbsp;		log.info(&quot;In method deleteStock&quot;);</b>
+<b class="nc">&nbsp;		stockRepository.deleteById(stockId);</b>
+&nbsp;
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Stock updateStock(Stock s) {
+<b class="nc">&nbsp;		log.info(&quot;In method updateStock&quot;);</b>
+<b class="nc">&nbsp;		return stockRepository.save(s);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Stock retrieveStock(Long stockId) {
+<b class="nc">&nbsp;		long start = System.currentTimeMillis();</b>
+<b class="nc">&nbsp;		log.info(&quot;In method retrieveStock&quot;);</b>
+<b class="nc">&nbsp;		Stock stock = stockRepository.findById(stockId).orElse(null);</b>
+<b class="nc">&nbsp;		log.info(&quot;out of method retrieveStock&quot;);</b>
+<b class="nc">&nbsp;		 long elapsedTime = System.currentTimeMillis() - start;</b>
+<b class="nc">&nbsp;		log.info(&quot;Method execution time: &quot; + elapsedTime + &quot; milliseconds.&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;		return stock;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public String retrieveStatusStock() {
+<b class="nc">&nbsp;		SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;);</b>
+<b class="nc">&nbsp;		Date now = new Date();</b>
+<b class="nc">&nbsp;		String msgDate = sdf.format(now);</b>
+<b class="nc">&nbsp;		String finalMessage = &quot;&quot;;</b>
+<b class="nc">&nbsp;		String newLine = System.getProperty(&quot;line.separator&quot;);</b>
+<b class="nc">&nbsp;		List&lt;Stock&gt; stocksEnRouge = (List&lt;Stock&gt;) stockRepository.retrieveStatusStock();</b>
+<b class="nc">&nbsp;		for (int i = 0; i &lt; stocksEnRouge.size(); i++) {</b>
+<b class="nc">&nbsp;			finalMessage = newLine + finalMessage + msgDate + newLine + &quot;: le stock &quot;</b>
+<b class="nc">&nbsp;					+ stocksEnRouge.get(i).getLibelleStock() + &quot; a une quantité de &quot; + stocksEnRouge.get(i).getQte()</b>
+<b class="nc">&nbsp;					+ &quot; inférieur à la quantité minimale a ne pas dépasser de &quot; + stocksEnRouge.get(i).getQteMin()</b>
+&nbsp;					+ newLine;
+&nbsp;
+&nbsp;		}
+<b class="nc">&nbsp;		log.info(finalMessage);</b>
+<b class="nc">&nbsp;		return finalMessage;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-25 03:18</div>
+</div>
+</body>
+</html>

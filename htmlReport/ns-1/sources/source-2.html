@@ -1,0 +1,229 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > FactureServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.services</a>
+</div>
+
+<h1>Coverage Summary for Class: FactureServiceImpl (com.esprit.examen.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FactureServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.services;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Set;
+&nbsp;import javax.transaction.Transactional;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import com.esprit.examen.entities.DetailFacture;
+&nbsp;import com.esprit.examen.entities.Facture;
+&nbsp;import com.esprit.examen.entities.Fournisseur;
+&nbsp;import com.esprit.examen.entities.Operateur;
+&nbsp;import com.esprit.examen.entities.Produit;
+&nbsp;import com.esprit.examen.repositories.DetailFactureRepository;
+&nbsp;import com.esprit.examen.repositories.FactureRepository;
+&nbsp;import com.esprit.examen.repositories.FournisseurRepository;
+&nbsp;import com.esprit.examen.repositories.OperateurRepository;
+&nbsp;import com.esprit.examen.repositories.ProduitRepository;
+&nbsp;import lombok.extern.slf4j.Slf4j;
+&nbsp;
+&nbsp;@Service
+<b class="nc">&nbsp;@Slf4j</b>
+&nbsp;@Transactional
+<b class="nc">&nbsp;public class FactureServiceImpl implements IFactureService {</b>
+&nbsp;
+&nbsp;	@Autowired
+&nbsp;	FactureRepository factureRepository;
+&nbsp;	@Autowired
+&nbsp;	OperateurRepository operateurRepository;
+&nbsp;	@Autowired
+&nbsp;	DetailFactureRepository detailFactureRepository;
+&nbsp;	@Autowired
+&nbsp;	FournisseurRepository fournisseurRepository;
+&nbsp;	@Autowired
+&nbsp;	ProduitRepository produitRepository;
+&nbsp;    @Autowired
+&nbsp;    ReglementServiceImpl reglementService;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public List&lt;Facture&gt; retrieveAllFactures() {
+<b class="nc">&nbsp;		List&lt;Facture&gt; factures = (List&lt;Facture&gt;) factureRepository.findAll();</b>
+<b class="nc">&nbsp;		for (Facture facture : factures) {</b>
+<b class="nc">&nbsp;			log.info(&quot; facture : &quot; + facture);</b>
+<b class="nc">&nbsp;		}</b>
+<b class="nc">&nbsp;		return factures;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	
+&nbsp;	public Facture addFacture(Facture f) {
+<b class="nc">&nbsp;		return factureRepository.save(f);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	/*
+&nbsp;	 * calculer les montants remise et le montant total d&#39;un détail facture
+&nbsp;	 * ainsi que les montants d&#39;une facture
+&nbsp;	 */
+&nbsp;	private Facture addDetailsFacture(Facture f, Set&lt;DetailFacture&gt; detailsFacture) {
+<b class="nc">&nbsp;		float montantFacture = 0;</b>
+<b class="nc">&nbsp;		float montantRemise = 0;</b>
+<b class="nc">&nbsp;		for (DetailFacture detail : detailsFacture) {</b>
+&nbsp;			//Récuperer le produit 
+<b class="nc">&nbsp;			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();</b>
+&nbsp;			//Calculer le montant total pour chaque détail Facture
+<b class="nc">&nbsp;			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();</b>
+&nbsp;			//Calculer le montant remise pour chaque détail Facture
+<b class="nc">&nbsp;			float montantRemiseDetail = (prixTotalDetail * detail.getPourcentageRemise()) / 100;</b>
+<b class="nc">&nbsp;			float prixTotalDetailRemise = prixTotalDetail - montantRemiseDetail;</b>
+<b class="nc">&nbsp;			detail.setMontantRemise(montantRemiseDetail);</b>
+<b class="nc">&nbsp;			detail.setPrixTotalDetail(prixTotalDetailRemise);</b>
+&nbsp;			//Calculer le montant total pour la facture
+<b class="nc">&nbsp;			montantFacture = montantFacture + prixTotalDetailRemise;</b>
+&nbsp;			//Calculer le montant remise pour la facture
+<b class="nc">&nbsp;			montantRemise = montantRemise + montantRemiseDetail;</b>
+<b class="nc">&nbsp;			detailFactureRepository.save(detail);</b>
+<b class="nc">&nbsp;		}</b>
+<b class="nc">&nbsp;		f.setMontantFacture(montantFacture);</b>
+<b class="nc">&nbsp;		f.setMontantRemise(montantRemise);</b>
+<b class="nc">&nbsp;		return f;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void cancelFacture(Long factureId) {
+&nbsp;		// Méthode 01
+&nbsp;		//Facture facture = factureRepository.findById(factureId).get();
+<b class="nc">&nbsp;		Facture facture = factureRepository.findById(factureId).orElse(new Facture());</b>
+<b class="nc">&nbsp;		facture.setArchivee(true);</b>
+<b class="nc">&nbsp;		factureRepository.save(facture);</b>
+&nbsp;		//Méthode 02 (Avec JPQL)
+<b class="nc">&nbsp;		factureRepository.updateFacture(factureId);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Facture retrieveFacture(Long factureId) {
+&nbsp;
+<b class="nc">&nbsp;		Facture facture = factureRepository.findById(factureId).orElse(null);</b>
+<b class="nc">&nbsp;		log.info(&quot;facture :&quot; + facture);</b>
+<b class="nc">&nbsp;		return facture;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public List&lt;Facture&gt; getFacturesByFournisseur(Long idFournisseur) {
+<b class="nc">&nbsp;		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);</b>
+<b class="nc">&nbsp;		return (List&lt;Facture&gt;) fournisseur.getFactures();</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
+<b class="nc">&nbsp;		Facture facture = factureRepository.findById(idFacture).orElse(null);</b>
+<b class="nc">&nbsp;		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);</b>
+<b class="nc">&nbsp;		operateur.getFactures().add(facture);</b>
+<b class="nc">&nbsp;		operateurRepository.save(operateur);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public float pourcentageRecouvrement(Date startDate, Date endDate) {
+<b class="nc">&nbsp;		float totalFacturesEntreDeuxDates = factureRepository.getTotalFacturesEntreDeuxDates(startDate,endDate);</b>
+<b class="nc">&nbsp;		float totalRecouvrementEntreDeuxDates =reglementService.getChiffreAffaireEntreDeuxDate(startDate,endDate);</b>
+<b class="nc">&nbsp;		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;</b>
+<b class="nc">&nbsp;		return pourcentage;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-25 03:18</div>
+</div>
+</body>
+</html>

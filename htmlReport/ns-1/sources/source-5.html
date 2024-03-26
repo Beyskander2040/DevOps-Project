@@ -1,0 +1,186 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > ProduitServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.services</a>
+</div>
+
+<h1>Coverage Summary for Class: ProduitServiceImpl (com.esprit.examen.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProduitServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (6/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    52,2%
+  </span>
+  <span class="absValue">
+    (12/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.services;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.List;
+&nbsp;import javax.transaction.Transactional;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import com.esprit.examen.entities.CategorieProduit;
+&nbsp;import com.esprit.examen.entities.Produit;
+&nbsp;import com.esprit.examen.entities.Stock;
+&nbsp;import com.esprit.examen.repositories.CategorieProduitRepository;
+&nbsp;import com.esprit.examen.repositories.ProduitRepository;
+&nbsp;import com.esprit.examen.repositories.StockRepository;
+&nbsp;import lombok.extern.slf4j.Slf4j;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;@Slf4j</b>
+<b class="fc">&nbsp;public class ProduitServiceImpl implements IProduitService {</b>
+&nbsp;
+&nbsp;	@Autowired
+&nbsp;	ProduitRepository produitRepository;
+&nbsp;	@Autowired
+&nbsp;	StockRepository stockRepository;
+&nbsp;	@Autowired
+&nbsp;	CategorieProduitRepository categorieProduitRepository;
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public List&lt;Produit&gt; retrieveAllProduits() {
+<b class="nc">&nbsp;		List&lt;Produit&gt; produits = (List&lt;Produit&gt;) produitRepository.findAll();</b>
+<b class="nc">&nbsp;		for (Produit produit : produits) {</b>
+<b class="nc">&nbsp;			log.info(&quot; Produit : &quot; + produit);</b>
+<b class="nc">&nbsp;		}</b>
+<b class="nc">&nbsp;		return produits;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Transactional
+&nbsp;	public Produit addProduit(Produit p) {
+<b class="fc">&nbsp;		produitRepository.save(p);</b>
+<b class="fc">&nbsp;		return p;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void deleteProduit(Long produitId) {
+<b class="fc">&nbsp;		produitRepository.deleteById(produitId);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Produit updateProduit(Produit updatedProduit) {
+<b class="nc">&nbsp;		Produit existingProduit = produitRepository.findById(updatedProduit.getIdProduit()).orElse(null);</b>
+<b class="nc">&nbsp;		if (existingProduit != null) {</b>
+<b class="nc">&nbsp;			existingProduit.setLibelleProduit(updatedProduit.getLibelleProduit());</b>
+<b class="nc">&nbsp;			existingProduit.setPrix(updatedProduit.getPrix());</b>
+&nbsp;
+<b class="nc">&nbsp;			return produitRepository.save(existingProduit);</b>
+&nbsp;		} else {
+&nbsp;			// Gérer le cas où le produit n&#39;est pas trouvé
+<b class="nc">&nbsp;			return null;</b>
+&nbsp;		}
+&nbsp;	}
+&nbsp;
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Produit retrieveProduit(Long produitId) {
+<b class="fc">&nbsp;		Produit produit = produitRepository.findById(produitId).orElse(null);</b>
+<b class="fc">&nbsp;		log.info(&quot;produit :&quot; + produit);</b>
+<b class="fc">&nbsp;		return produit;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void assignProduitToStock(Long idProduit, Long idStock) {
+<b class="fc">&nbsp;		Produit produit = produitRepository.findById(idProduit).orElse(null);</b>
+<b class="fc">&nbsp;		Stock stock = stockRepository.findById(idStock).orElse(null);</b>
+<b class="fc">&nbsp;		produit.setStock(stock);</b>
+<b class="fc">&nbsp;		produitRepository.save(produit);</b>
+&nbsp;
+&nbsp;	}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-25 03:18</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > OperateurServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.services</a>
+</div>
+
+<h1>Coverage Summary for Class: OperateurServiceImpl (com.esprit.examen.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OperateurServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.services;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import com.esprit.examen.entities.Operateur;
+&nbsp;import com.esprit.examen.repositories.OperateurRepository;
+&nbsp;
+&nbsp;@Service
+<b class="nc">&nbsp;public class OperateurServiceImpl implements IOperateurService {</b>
+&nbsp;
+&nbsp;	@Autowired
+&nbsp;	OperateurRepository  operateurRepository;
+&nbsp;	@Override
+&nbsp;	public List&lt;Operateur&gt; retrieveAllOperateurs() {
+<b class="nc">&nbsp;		return (List&lt;Operateur&gt;) operateurRepository.findAll();</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Operateur addOperateur(Operateur o) {
+<b class="nc">&nbsp;		operateurRepository.save(o);</b>
+<b class="nc">&nbsp;		return o;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void deleteOperateur(Long id) {
+<b class="nc">&nbsp;		operateurRepository.deleteById(id);</b>
+&nbsp;		
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Operateur updateOperateur(Operateur o) {
+<b class="nc">&nbsp;		operateurRepository.save(o);</b>
+<b class="nc">&nbsp;		return o;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Operateur retrieveOperateur(Long id) {
+<b class="nc">&nbsp;		Operateur operateur = operateurRepository.findById(id).orElse(null);</b>
+<b class="nc">&nbsp;		return operateur;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-25 03:18</div>
+</div>
+</body>
+</html>
