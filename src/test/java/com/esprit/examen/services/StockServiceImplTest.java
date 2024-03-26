@@ -3,17 +3,21 @@ package com.esprit.examen.services;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.entities.Stock;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
+
 public class StockServiceImplTest {
-    @Autowired
-    IStockService stockService;
+    @Mock
+    private IStockService stockService;
 
     @Test
     public void testAddStock() {

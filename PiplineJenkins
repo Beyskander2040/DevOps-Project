@@ -64,6 +64,11 @@ stage('JaCoCo coverage report') {
                         }
                                 }
                 }
+                   stage('Deploy to Nexus') {
+                            steps {
+                                sh 'mvn deploy'
+                            }
+                        }
 
              }
 }
