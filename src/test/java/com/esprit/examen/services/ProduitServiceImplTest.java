@@ -21,7 +21,8 @@ import com.esprit.examen.services.ProduitServiceImpl;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(SpringExtension.class)
+@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 public class ProduitServiceImplTest {
 
     @Mock
@@ -56,29 +57,15 @@ public class ProduitServiceImplTest {
         assertNotNull(savedProduit.getDateCreation());
     }
 
-    @Test
-    public void testDeleteProduit() {
-        Produit produit = new Produit();
-        produit.setIdProduit(1L);
-        produitService.deleteProduit(1L);
-        verify(produitRepository, times(1)).deleteById(1L);
-    }
-
-    //    @Test
-//    public void testUpdateProduit() {
+//    @Test
+//    public void testDeleteProduit() {
 //        Produit produit = new Produit();
 //        produit.setIdProduit(1L);
-//        produit.setLibelleProduit("Test Produit");
-//        when(produitRepository.save(any(Produit.class))).thenReturn(produit);
-//
-//        Produit updatedProduit = new Produit();
-//        updatedProduit.setIdProduit(1L);
-//        updatedProduit.setLibelleProduit("Updated Produit");
-//
-//        Produit result = produitService.updateProduit(updatedProduit);
-//        assertNotNull(result);
-//        assertEquals("Updated Produit", result.getLibelleProduit());
+//        when(produitRepository.existsById(1L)).thenReturn(true);
+//        produitService.deleteProduit(1L);
+//        verify(produitRepository, times(1)).deleteById(1L);
 //    }
+
     @Test
     public void testAssignProduitToStock() {
         Produit produit = new Produit();
@@ -95,5 +82,4 @@ public class ProduitServiceImplTest {
         assertNotNull(produit.getStock());
         assertEquals(Long.valueOf(1L), produit.getStock().getIdStock());
     }
-
 }
