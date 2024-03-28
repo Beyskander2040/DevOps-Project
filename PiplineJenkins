@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'M2_HOME'
+    }
+
+
+
+    stages {
+        stage('Checkout Git repository') {
+            steps {
+                echo 'Pulling'
+                git branch: 'master', credentialsId: '50149f68-5226-4b9f-acb4-c0b99e149e50', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
+            }
+        }
+
+stage('Tests - JUnit/Mockito') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+         stage('Build package') {
+                    steps {
+                        sh 'mvn package'
+                    }
+                }
+                 stage('Maven Install') {
+                            steps {
+                                sh 'mvn install'
+                            }
+                        }
+                         stage('Rapport JaCoCo') {
+                               steps {
+                                    sh 'mvn test'
+                                        sh 'mvn jacoco:report'
+
+
+                                              }
+                                       }
+
+stage('JaCoCo coverage report') {
+            steps {
+                step([$class: 'JacocoPublisher',
+                      execPattern: '**/target/jacoco.exec',
+                      classPattern: '**/classes',
+                      sourcePattern: '**/src',
+                      exclusionPattern: '*/target/**/,**/*Test*,**/*_javassist/**'
+                ])
+            }
+        }
+
+         stage('SonarQube Analysis') {
+                    steps {
+                        withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
+                            sh 'mvn sonar:sonar -Dsonar.token=$SONAR_TOKEN'
+                        }
+                                }
+                }
+                   stage('Deploy to Nexus') {
+                            steps {
+                                sh 'mvn deploy'
+                            }
+                        }
+
+             }
+}
