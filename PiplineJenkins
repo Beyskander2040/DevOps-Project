@@ -14,6 +14,11 @@ pipeline {
                 git branch: 'master', credentialsId: '50149f68-5226-4b9f-acb4-c0b99e149e50', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
             }
         }
+  stage('Maven Install') {
+                            steps {
+                                sh 'mvn install'
+                            }
+                        }
 
 stage('Tests - JUnit/Mockito') {
             steps {
@@ -25,11 +30,7 @@ stage('Tests - JUnit/Mockito') {
                         sh 'mvn package'
                     }
                 }
-                 stage('Maven Install') {
-                            steps {
-                                sh 'mvn install'
-                            }
-                        }
+               
                          stage('Rapport JaCoCo') {
                                steps {
                                     sh 'mvn test'
