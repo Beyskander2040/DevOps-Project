@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="53fbe762-f626-44e2-973e-7753e035c2c1" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\skand\Desktop\DEVOPSVALIDATION\Projets Front&amp;Back DevOps\projet1 spring-angular\tpAchatProject\htmlReport" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2EZTLIi371P6PvDBfyW6KZSE6Qh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/skand/Desktop/DEVOPSVALIDATION/Projets FrontBack DevOps/projet1 spring-angular/tpAchatProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "afd867ba7e6ba8de01d406a0b272ec75",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.esprit.examen.services" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value=" mvn clean test jacoco:report " />
+      <command value=" mvn test jacoco:report " />
+      <command value="mvn test" />
+      <command value="mvn jacoco:report" />
+      <command value="mvn clean install" />
+      <command value="mvn -Dtest=StockServiceImpl test" />
+      <command value="mvn -Dtest=ProduitServiceImpl test" />
+      <command value="mvn -Dtest=ProduitServiceImplTest test" />
+      <command value="mvn -Dtest=StockServiceImplTest test" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.StockServiceImplTest">
+    <configuration name="ProduitServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tpAchatProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.esprit.examen.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.esprit.examen.services" />
+      <option name="MAIN_CLASS_NAME" value="com.esprit.examen.services.ProduitServiceImplTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProduitServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tpAchatProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.esprit.examen.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.esprit.examen.services" />
+      <option name="MAIN_CLASS_NAME" value="com.esprit.examen.services.ProduitServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StockServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tpAchatProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.esprit.examen.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.esprit.examen.services" />
+      <option name="MAIN_CLASS_NAME" value="com.esprit.examen.services.StockServiceImplTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProduitServiceImpl.java.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tpAchatProject/target/site/jacoco/com.esprit.examen.services/ProduitServiceImpl.java.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tpAchatProject/target/site/jacoco/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="TpAchatProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="tpAchatProject" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.esprit.examen.TpAchatProjectApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.StockServiceImplTest" />
+        <item itemvalue="JUnit.ProduitServiceImplTest" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.ProduitServiceImpl.java.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53fbe762-f626-44e2-973e-7753e035c2c1" name="Changes" comment="" />
+      <created>1662802052802</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662802052802</updated>
+      <workItem from="1662802054011" duration="7641000" />
+      <workItem from="1662815106719" duration="2178000" />
+      <workItem from="1663079028176" duration="218000" />
+      <workItem from="1663850176067" duration="1505000" />
+      <workItem from="1663920756144" duration="1092000" />
+      <workItem from="1710860638952" duration="932000" />
+      <workItem from="1710863915981" duration="24741000" />
+      <workItem from="1711334289972" duration="19480000" />
+      <workItem from="1711497544675" duration="5937000" />
+      <workItem from="1711631002338" duration="1039000" />
+      <workItem from="1711632052644" duration="40000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/tpAchatProject$StockServiceImplTest.ic" NAME="StockServiceImplTest Coverage Results" MODIFIED="1711335669911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.esprit.examen.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/tpAchatProject$ProduitServiceImplTest.ic" NAME="ProduitServiceImplTest Coverage Results" MODIFIED="1711337073126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.esprit.examen.services.*</FILTER>
+    </SUITE>
+  </component>
+</project>
