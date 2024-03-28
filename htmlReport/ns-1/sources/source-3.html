@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > FournisseurServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.services</a>
+</div>
+
+<h1>Coverage Summary for Class: FournisseurServiceImpl (com.esprit.examen.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FournisseurServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.services;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import javax.transaction.Transactional;
+&nbsp;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import com.esprit.examen.entities.DetailFournisseur;
+&nbsp;import com.esprit.examen.entities.Fournisseur;
+&nbsp;import com.esprit.examen.entities.SecteurActivite;
+&nbsp;import com.esprit.examen.repositories.DetailFournisseurRepository;
+&nbsp;import com.esprit.examen.repositories.FournisseurRepository;
+&nbsp;import com.esprit.examen.repositories.ProduitRepository;
+&nbsp;import com.esprit.examen.repositories.SecteurActiviteRepository;
+&nbsp;import lombok.extern.slf4j.Slf4j;
+&nbsp;
+&nbsp;@Service
+<b class="nc">&nbsp;@Slf4j</b>
+<b class="nc">&nbsp;public class FournisseurServiceImpl implements IFournisseurService {</b>
+&nbsp;
+&nbsp;	@Autowired
+&nbsp;	FournisseurRepository fournisseurRepository;
+&nbsp;	@Autowired
+&nbsp;	DetailFournisseurRepository detailFournisseurRepository;
+&nbsp;	@Autowired
+&nbsp;	ProduitRepository produitRepository;
+&nbsp;	@Autowired
+&nbsp;	SecteurActiviteRepository secteurActiviteRepository;
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public List&lt;Fournisseur&gt; retrieveAllFournisseurs() {
+<b class="nc">&nbsp;		List&lt;Fournisseur&gt; fournisseurs = (List&lt;Fournisseur&gt;) fournisseurRepository.findAll();</b>
+<b class="nc">&nbsp;		for (Fournisseur fournisseur : fournisseurs) {</b>
+<b class="nc">&nbsp;			log.info(&quot; fournisseur : &quot; + fournisseur);</b>
+<b class="nc">&nbsp;		}</b>
+<b class="nc">&nbsp;		return fournisseurs;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;
+&nbsp;	public Fournisseur addFournisseur(Fournisseur f /*Master*/) {
+<b class="nc">&nbsp;		DetailFournisseur df= new DetailFournisseur();//Slave</b>
+<b class="nc">&nbsp;		df.setDateDebutCollaboration(new Date()); //util</b>
+&nbsp;		//On affecte le &quot;Slave&quot; au &quot;Master&quot;
+<b class="nc">&nbsp;		f.setDetailFournisseur(df);	</b>
+<b class="nc">&nbsp;		fournisseurRepository.save(f);</b>
+<b class="nc">&nbsp;		return f;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	private DetailFournisseur  saveDetailFournisseur(Fournisseur f){
+<b class="nc">&nbsp;		DetailFournisseur df = f.getDetailFournisseur();</b>
+<b class="nc">&nbsp;		detailFournisseurRepository.save(df);</b>
+<b class="nc">&nbsp;		return df;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public Fournisseur updateFournisseur(Fournisseur f) {
+<b class="nc">&nbsp;		DetailFournisseur df = saveDetailFournisseur(f);</b>
+<b class="nc">&nbsp;		f.setDetailFournisseur(df);	</b>
+<b class="nc">&nbsp;		fournisseurRepository.save(f);</b>
+<b class="nc">&nbsp;		return f;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void deleteFournisseur(Long fournisseurId) {
+<b class="nc">&nbsp;		fournisseurRepository.deleteById(fournisseurId);</b>
+&nbsp;
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Fournisseur retrieveFournisseur(Long fournisseurId) {
+&nbsp;
+<b class="nc">&nbsp;		Fournisseur fournisseur = fournisseurRepository.findById(fournisseurId).orElse(null);</b>
+<b class="nc">&nbsp;		return fournisseur;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
+<b class="nc">&nbsp;		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);</b>
+<b class="nc">&nbsp;		SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);</b>
+<b class="nc">&nbsp;        fournisseur.getSecteurActivites().add(secteurActivite);</b>
+<b class="nc">&nbsp;        fournisseurRepository.save(fournisseur);</b>
+&nbsp;		
+&nbsp;		
+&nbsp;	}
+&nbsp;
+&nbsp;	
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-25 03:18</div>
+</div>
+</body>
+</html>

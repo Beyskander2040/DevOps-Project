@@ -442,3 +442,6 @@ Caused by: java.sql.SQLSyntaxErrorException: Can't DROP FOREIGN KEY `FKo4yc7y45x
 2024-03-28 16:34:46.246  INFO 22948 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8089 (http) with context path '/RevisionSpring'
 2024-03-28 16:34:46.450  INFO 22948 --- [restartedMain] c.e.examen.TpAchatProjectApplication     : Started TpAchatProjectApplication in 2.189 seconds (JVM running for 405.801)
 2024-03-28 16:34:46.452  INFO 22948 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-03-28 16:41:43.677  INFO 22948 --- [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-28 16:41:43.677  INFO 22948 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-03-28 16:41:43.678  INFO 22948 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
