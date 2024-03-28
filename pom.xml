@@ -22,10 +22,7 @@
 	</properties>
 
 	<dependencies>
-<<<<<<< HEAD
 
-=======
->>>>>>> 77d303792fc7bc1a61377e13cbbdf005e3536264
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -58,7 +55,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
+
 		<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
@@ -68,13 +65,13 @@
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
-=======
+
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
->>>>>>> 77d303792fc7bc1a61377e13cbbdf005e3536264
+
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -107,7 +104,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-<<<<<<< HEAD
+
 				<version>2.22.2</version>
 				<configuration>
 					<reportFormat>plain</reportFormat>
@@ -116,9 +113,9 @@
 						<include>**/*IT*.java</include>
 					</includes>
 				</configuration>
-=======
+
 				<version>3.0.0</version>
->>>>>>> 77d303792fc7bc1a61377e13cbbdf005e3536264
+
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
