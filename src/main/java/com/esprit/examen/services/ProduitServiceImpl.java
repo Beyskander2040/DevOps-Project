@@ -47,10 +47,27 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Produit updateProduit(Produit p) {
 		return produitRepository.save(p);
 	}
 
+=======
+	public Produit updateProduit(Produit updatedProduit) {
+		Produit existingProduit = produitRepository.findById(updatedProduit.getIdProduit()).orElse(null);
+		if (existingProduit != null) {
+			existingProduit.setLibelleProduit(updatedProduit.getLibelleProduit());
+			existingProduit.setPrix(updatedProduit.getPrix());
+
+			return produitRepository.save(existingProduit);
+		} else {
+			// Gérer le cas où le produit n'est pas trouvé
+			return null;
+		}
+	}
+
+
+>>>>>>> 77d303792fc7bc1a61377e13cbbdf005e3536264
 	@Override
 	public Produit retrieveProduit(Long produitId) {
 		Produit produit = produitRepository.findById(produitId).orElse(null);
@@ -68,4 +85,8 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 77d303792fc7bc1a61377e13cbbdf005e3536264
 }
