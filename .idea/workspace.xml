@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="53fbe762-f626-44e2-973e-7753e035c2c1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PiplineJenkins" beforeDir="false" afterPath="$PROJECT_DIR$/PiplineJenkins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/myapp.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp.log.2024-03-19.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/esprit/examen/services/FactureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/esprit/examen/services/FactureServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/esprit/examen/services/ProduitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/esprit/examen/services/ProduitServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/esprit/examen/services/ProduitServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/esprit/examen/services/ProduitServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/esprit/examen/services/StockServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/esprit/examen/services/StockServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +106,7 @@
       <command value="mvn -Dtest=StockServiceImplTest test" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.StockServiceImplTest">
+  <component name="RunManager" selected="Spring Boot.TpAchatProjectApplication">
     <configuration name="ProduitServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tpAchatProject" />
       <extension name="coverage">
@@ -188,6 +196,8 @@
       <workItem from="1711631002338" duration="1039000" />
       <workItem from="1711632052644" duration="40000" />
       <workItem from="1711638765912" duration="2111000" />
+      <workItem from="1712186934337" duration="2840000" />
+      <workItem from="1712305880390" duration="1511000" />
     </task>
     <servers />
   </component>
