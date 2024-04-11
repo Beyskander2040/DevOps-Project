@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     // Étape de construction de l'image Docker
-                    sh 'sudo docker build -t benelbeyskander465/tpachatproject:1.0 .'
+                    sh 'docker build -t benelbeyskander465/tpachatproject:1.0 .'
                 }
             }
         }
