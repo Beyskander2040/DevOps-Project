@@ -46,7 +46,8 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-         sh 'docker push benelbeyskander465/tpachatproject:1.0'
+            sh 'docker push benelbeyskander/tpachatproject:1.0'
+
 
             }
         }
