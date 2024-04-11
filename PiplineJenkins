@@ -1,11 +1,9 @@
-   pipeline {
+pipeline {
     agent any
 
     tools {
         maven 'M2_HOME'
     }
-
-
 
     stages {
         stage('Checkout Git repository') {
@@ -14,33 +12,32 @@
                 git branch: 'master', credentialsId: '50149f68-5226-4b9f-acb4-c0b99e149e50', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
             }
         }
-  stage('Maven Install') {
-                            steps {
-                                sh 'mvn install'
-                            }
-                        }
 
-stage('Tests - JUnit/Mockito') {
+        stage('Maven Install') {
+            steps {
+                sh 'mvn install'
+            }
+        }
+
+        stage('Tests - JUnit/Mockito') {
             steps {
                 sh 'mvn test'
             }
         }
-         stage('Build package') {
-                    steps {
-                        sh 'mvn package'
-                    }
-                }
-               
-                         stage('Rapport JaCoCo') {
-                               steps {
-                                    sh 'mvn test'
-                                        sh 'mvn jacoco:report'
 
+        stage('Build package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
 
-                                              }
-                                       }
+        stage('Rapport JaCoCo') {
+            steps {
+                sh 'mvn jacoco:report'
+            }
+        }
 
-stage('JaCoCo coverage report') {
+        stage('JaCoCo coverage report') {
             steps {
                 step([$class: 'JacocoPublisher',
                       execPattern: '**/target/jacoco.exec',
@@ -51,18 +48,27 @@ stage('JaCoCo coverage report') {
             }
         }
 
-         stage('SonarQube Analysis') {
-                    steps {
-                        withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
-                            sh 'mvn sonar:sonar -Dsonar.token=$SONAR_TOKEN'
-                        }
-                                }
+        stage('SonarQube Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
+                    sh 'mvn sonar:sonar -Dsonar.token=$SONAR_TOKEN'
                 }
-                   stage('Deploy to Nexus') {
-                            steps {
-                                sh 'mvn deploy'
-                            }
-                        }
+            }
+        }
 
-             }
+        stage('Deploy to Nexus') {
+            steps {
+                sh 'mvn deploy'
+            }
+        }
+
+        stage('Build Docker') {
+            steps {
+                // Étape de construction de l'image Docker
+                script {
+                    docker.build('benelbeyskander/tpachatproject:1.0', '.') // Construit l'image Docker avec le tag spécifié
+                }
+            }
+        }
+    }
 }
