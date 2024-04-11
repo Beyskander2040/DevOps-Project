@@ -6,8 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_CREDENTIALS_USR = credentials('benelbeyskander465-dockerhub').username
-        DOCKERHUB_CREDENTIALS_PSW = credentials('benelbeyskander465-dockerhub').password
+      DOCKERHUB_CREDENTIALS=credentials('benelbeyskander465-dockerhub')
     }
 
     stages {
