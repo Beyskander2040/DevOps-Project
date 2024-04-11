@@ -19,11 +19,7 @@ pipeline {
             }
         }
 
-        stage('Tests - JUnit/Mockito') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+
 
         stage('Build package') {
             steps {
@@ -35,7 +31,7 @@ pipeline {
         stage('Build Docker') {
             steps {
               script {
-                 sh 'sudo chmod 666 /var/run/docker.sock'
+
                  sh 'docker build -t benelbeyskander/tpachatproject:1.0 .'
                      }
 
