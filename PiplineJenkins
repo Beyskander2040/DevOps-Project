@@ -5,6 +5,11 @@ pipeline {
         maven 'M2_HOME'
     }
 
+    environment {
+        DOCKERHUB_CREDENTIALS_USR = credentials('benelbeyskander465-dockerhub').username
+        DOCKERHUB_CREDENTIALS_PSW = credentials('benelbeyskander465-dockerhub').password
+    }
+
     stages {
         stage('Checkout Git repository') {
             steps {
@@ -29,11 +34,21 @@ pipeline {
             steps {
                 script {
                     // Étape de construction de l'image Docker
-                    withDockerRegistry(credentialsId: '35', toolName: 'Docker') {
-                        sh 'docker build -t benelbeyskander/tpachatproject:1.0 .'
-                        sh 'docker push benelbeyskander/tpachatproject:1.0'
-                    }
+                    sh 'docker build -t benelbeyskander/tpachatproject:1.0 .'
                 }
+            }
+        }
+
+        stage('Login to Docker Hub') {
+            steps {
+                sh "docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW"
+                echo 'Login Completed'
+            }
+        }
+
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                sh 'docker push benelbeyskander/tpachatproject:1.0'
             }
         }
     }
