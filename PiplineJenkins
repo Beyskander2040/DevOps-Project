@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout Git repository') {
             steps {
                 echo 'Pulling'
-                git branch: 'malek', credentialsId: '50149f68-5226-4b9f-acb4-c0b99e149e50', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
+                git branch: 'malek', credentialsId: 'malekzaidi123', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
             }
         }
 
@@ -25,22 +25,6 @@ pipeline {
                 sh 'mvn package'
             }
         }
-
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    // Étape de construction de l'image Docker
-                    sh 'docker build -t benelbeyskander/tpachatproject:1.0 .'
-                }
-            }
-        }
-
-        stage('Login to Docker Hub') {
-            steps {
-                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
-            }
-        }
-
-
+        
     }
 }
