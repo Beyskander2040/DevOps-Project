@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53fbe762-f626-44e2-973e-7753e035c2c1" name="Changes" comment="sonar">
-      <change beforePath="$PROJECT_DIR$/PiplineJenkins" beforeDir="false" afterPath="$PROJECT_DIR$/PiplineJenkins" afterDir="false" />
-    </list>
+    <list default="true" id="53fbe762-f626-44e2-973e-7753e035c2c1" name="Changes" comment="sonar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,7 +221,7 @@
       <workItem from="1711638765912" duration="2111000" />
       <workItem from="1712186934337" duration="2840000" />
       <workItem from="1712305880390" duration="1511000" />
-      <workItem from="1712841896465" duration="5029000" />
+      <workItem from="1712841896465" duration="5481000" />
     </task>
     <task id="LOCAL-00001" summary="sonar">
       <option name="closed" value="true" />
