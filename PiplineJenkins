@@ -1,30 +1,40 @@
 pipeline {
-    agent any
+agent any
 
-    tools {
-        maven 'M2_HOME'
+tools {
+    maven 'M2_HOME'
+}
+
+
+
+stages {
+    stage('Checkout Git repository') {
+        steps {
+            echo 'Pulling'
+            git branch: 'malek', credentialsId: 'malekzaidi123', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
+        }
     }
 
+stage('Maven Clean Compile') {
+             steps {
+                 sh 'mvn clean'
+                 echo 'Running Maven Compile'
+                 sh 'mvn compile'
+             }
+         }
+stage('Tests - JUnit/Mockito') {
+steps {
+sh 'mvn test'
+}
+}
 
-    stages {
-        stage('Checkout Git repository') {
-            steps {
-                echo 'Pulling'
-                git branch: 'malek', credentialsId: 'malekzaidi123', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
+     stage('SonarQube Analysis') {
+                steps {
+                    withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
+                        sh 'mvn sonar:sonar -Dsonar.token=$SONAR_TOKEN'
+                    }
+                            }
             }
-        }
 
-        stage('Maven Install') {
-            steps {
-                sh 'mvn install'
-            }
-        }
-
-        stage('Build package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-        
-    }
+         }
 }
