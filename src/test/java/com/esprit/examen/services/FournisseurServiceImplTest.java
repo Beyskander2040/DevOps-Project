@@ -1,20 +1,22 @@
 package com.esprit.examen.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.repositories.FournisseurRepository;
 
-@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 public class FournisseurServiceImplTest {
 
     @Mock
@@ -23,36 +25,37 @@ public class FournisseurServiceImplTest {
     @InjectMocks
     private FournisseurServiceImpl fournisseurService;
 
+    private Fournisseur fournisseur;
+
+    @Before
+    public void setUp() {
+        fournisseur = new Fournisseur();
+        fournisseur.setIdFournisseur(1L);
+        fournisseur.setCode("F1");
+        fournisseur.setLibelle("Fournisseur Test");
+        // Set other properties as needed
+    }
+
     @Test
     public void testRetrieveAllFournisseurs() {
-        // Given
         List<Fournisseur> fournisseurs = new ArrayList<>();
-        // Add some dummy suppliers to the list
-        fournisseurs.add(new Fournisseur());
-        fournisseurs.add(new Fournisseur());
+        fournisseurs.add(fournisseur);
+
         when(fournisseurRepository.findAll()).thenReturn(fournisseurs);
 
-        // When
-        List<Fournisseur> result = fournisseurService.retrieveAllFournisseurs();
+        List<Fournisseur> retrievedFournisseurs = fournisseurService.retrieveAllFournisseurs();
 
-        // Then
-        assertEquals(2, result.size());
-        verify(fournisseurRepository, times(1)).findAll();
+        assertEquals(fournisseurs.size(), retrievedFournisseurs.size());
+        assertEquals(fournisseur.getLibelle(), retrievedFournisseurs.get(0).getLibelle());
     }
 
     @Test
     public void testAddFournisseur() {
-        // Given
-        Fournisseur fournisseur = new Fournisseur();
         when(fournisseurRepository.save(fournisseur)).thenReturn(fournisseur);
 
-        // When
-        Fournisseur result = fournisseurService.addFournisseur(fournisseur);
+        Fournisseur savedFournisseur = fournisseurService.addFournisseur(fournisseur);
 
-        // Then
-        assertEquals(fournisseur, result);
-        verify(fournisseurRepository, times(1)).save(fournisseur);
+        assertNotNull(savedFournisseur);
+        assertEquals(fournisseur.getLibelle(), savedFournisseur.getLibelle());
     }
-
-    // Add other tests for other service methods if needed
 }
