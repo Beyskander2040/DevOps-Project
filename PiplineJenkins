@@ -29,11 +29,9 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
-                    sh 'mvn clean verify sonar:sonar \
-                        -Dsonar.host.url=http://192.168.1.14:9000 \
-                        -Dsonar.login=$SONAR_TOKEN'
-                }
+                sh 'mvn clean verify sonar:sonar \
+                    -Dsonar.host.url=http://192.168.1.14:9000 \
+                    -Dsonar.login=squ_41350b131d500a68162f170815a1a445e13f8b1c'
             }
         }
     }
