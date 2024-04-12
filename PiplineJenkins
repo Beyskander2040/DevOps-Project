@@ -44,7 +44,7 @@ pipeline {
          stage('Build Docker Image') {
                     steps {
                         script {
-                            docker.build('fournisseur:latest', '-f Dockerfile .')
+                          sh 'docker build -t malek/tpachatproject:1.0 .'
                         }
                     }
                 }
