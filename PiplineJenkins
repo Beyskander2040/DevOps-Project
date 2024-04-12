@@ -1,34 +1,33 @@
 pipeline {
-agent any
+    agent any
 
-tools {
-    maven 'M2_HOME'
-}
-
-
-
-stages {
-    stage('Checkout Git repository') {
-        steps {
-            echo 'Pulling'
-            git branch: 'malek', credentialsId: 'malekzaidi123', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
-        }
+    tools {
+        maven 'M2_HOME'
     }
 
-stage('Maven Clean Compile') {
-             steps {
-                 sh 'mvn clean'
-                 echo 'Running Maven Compile'
-                 sh 'mvn compile'
-             }
-         }
-stage('Tests - JUnit/Mockito') {
-steps {
-sh 'mvn test'
-}
-}
+    stages {
+        stage('Checkout Git repository') {
+            steps {
+                echo 'Pulling'
+                git branch: 'malek', credentialsId: 'malekzaidi123', url: 'https://github.com/Beyskander2040/DevOps-Project.git'
+            }
+        }
 
-     stage('SonarQube Analysis') {
+        stage('Maven Clean Compile') {
+            steps {
+                sh 'mvn clean'
+                echo 'Running Maven Compile'
+                sh 'mvn compile'
+            }
+        }
+
+        stage('Tests - JUnit/Mockito') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('SonarQube Analysis') {
             steps {
                 sh 'mvn clean verify sonar:sonar \
                     -Dsonar.host.url=http://192.168.1.7:9000 \
@@ -36,5 +35,10 @@ sh 'mvn test'
             }
         }
 
-         }
+        stage('Deploy to Nexus') {
+            steps {
+                sh 'mvn deploy'
+            }
+        }
+    }
 }
