@@ -31,7 +31,7 @@ sh 'mvn test'
      stage('SonarQube Analysis') {
             steps {
                 sh 'mvn clean verify sonar:sonar \
-                    -Dsonar.host.url=http://192.168.1.14:9000 \
+                    -Dsonar.host.url=http://192.168.1.7:9000 \
                     -Dsonar.login=squ_38e20cf8bc57c9b0462cd69a5a3a83529306a2d1'
             }
         }
