@@ -31,7 +31,7 @@ sh 'mvn test'
      stage('SonarQube Analysis') {
                 steps {
                     withCredentials([string(credentialsId: 'scanner', variable: 'SONAR_TOKEN')]) {
-                        sh 'mvn sonar:sonar -Dsonar.token=$SONAR_TOKEN'
+                       sh "mvn sonar:sonar -Dsonar.host.url=http://192.168.1.7:9000 -Dsonar.login=$SONAR_TOKEN"
                     }
                             }
             }
