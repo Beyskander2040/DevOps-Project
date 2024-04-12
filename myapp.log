@@ -3046,3 +3046,5 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 2024-04-12 13:10:23.938  INFO 15616 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2024-04-12 13:10:24.650  WARN 15616 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-04-12 13:10:24.864  INFO 15616 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-12 13:10:25.059  INFO 15616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8089 (http) with context path '/RevisionSpring'
+2024-04-12 13:10:25.398  INFO 15616 --- [restartedMain] c.e.examen.TpAchatProjectApplication     : Started TpAchatProjectApplication in 4.985 seconds (JVM running for 5.681)
