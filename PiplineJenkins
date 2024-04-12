@@ -6,8 +6,8 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('benelbeyskander465-dockerhub')
-        DOCKER_COMPOSE_VERSION='1.29.2' // Version de Docker Compose à utiliser
+        DOCKERHUB_CREDENTIALS = credentials('benelbeyskander465-dockerhub')
+        DOCKER_COMPOSE_VERSION = '1.29.2' // Version de Docker Compose à utiliser
     }
 
     stages {
@@ -51,12 +51,16 @@ pipeline {
             }
         }
 
-         steps {
-                sh 'docker-compose up -d'
+        stage('Deploy with Docker Compose') {
+            steps {
+                script {
+                    // Assurez-vous que vous êtes dans le répertoire contenant le fichier docker-compose.yml
 
+                        // Exécutez docker-compose up -d
+                        sh 'docker-compose up -d'
 
-              }
-
-    }
+                }
+            }
+        }
     }
 }
