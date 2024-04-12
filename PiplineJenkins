@@ -51,17 +51,11 @@ pipeline {
             }
         }
 
-        stage('Deploy with Docker Compose') {
-            steps {
-                script {
-                    // Télécharger et installer Docker Compose
-                    sh "sudo curl -L \"https://github.com/docker/compose/releases/download/${env.DOCKER_COMPOSE_VERSION}/docker-compose-\$(uname -s)-\$(uname -m)\" -o /usr/local/bin/docker-compose"
-                    sh 'sudo chmod +x /usr/local/bin/docker-compose'
+         steps {
+                sh 'docker-compose up -d'
 
-                    // Exécuter Docker Compose up
-                    sh 'sudo docker-compose up -d'
-                }
-            }
+
+              }
         }
     }
 }
