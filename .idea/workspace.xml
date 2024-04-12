@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53fbe762-f626-44e2-973e-7753e035c2c1" name="Changes" comment="sonar">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PiplineJenkins" beforeDir="false" afterPath="$PROJECT_DIR$/PiplineJenkins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +118,7 @@
       <command value="mvn -Dtest=StockServiceImplTest test" />
     </option>
   </component>
-  <component name="RunManager" selected="Docker.Dockerfile">
+  <component name="RunManager" selected="Spring Boot.TpAchatProjectApplication">
     <configuration name="ProduitServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tpAchatProject" />
       <extension name="coverage">
@@ -165,9 +166,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProduitServiceImpl.java.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tpAchatProject/target/site/jacoco/com.esprit.examen.services/ProduitServiceImpl.java.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tpAchatProject/target/site/jacoco/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -186,19 +184,31 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="JUnit.StockServiceImplTest" />
         <item itemvalue="JUnit.ProduitServiceImplTest" />
         <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="JavaScript Debug.ProduitServiceImpl.java.html" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +234,7 @@
       <workItem from="1711638765912" duration="2111000" />
       <workItem from="1712186934337" duration="2840000" />
       <workItem from="1712305880390" duration="1511000" />
-      <workItem from="1712841896465" duration="16526000" />
+      <workItem from="1712841896465" duration="22092000" />
     </task>
     <task id="LOCAL-00001" summary="sonar">
       <option name="closed" value="true" />
