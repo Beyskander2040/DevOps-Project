@@ -6,7 +6,8 @@ pipeline {
     }
 
     environment {
-      DOCKERHUB_CREDENTIALS=credentials('benelbeyskander465-dockerhub')
+        DOCKERHUB_CREDENTIALS=credentials('benelbeyskander465-dockerhub')
+        DOCKER_COMPOSE_VERSION='1.29.2' // Version de Docker Compose à utiliser
     }
 
     stages {
@@ -40,28 +41,27 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                sh "echo \$DOCKERHUB_CREDENTIALS_PSW | docker login -u \$DOCKERHUB_CREDENTIALS_USR --password-stdin"
             }
         }
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-            sh 'docker push benelbeyskander465/tpachatproject:1.0'
-
-
+                sh 'docker push benelbeyskander465/tpachatproject:1.0'
             }
         }
+
         stage('Deploy with Docker Compose') {
             steps {
                 script {
-                    // Download and install Docker Compose
-                    sh "sudo curl -L \"https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-\$(uname -s)-\$(uname -m)\" -o /usr/local/bin/docker-compose"
+                    // Télécharger et installer Docker Compose
+                    sh "sudo curl -L \"https://github.com/docker/compose/releases/download/${env.DOCKER_COMPOSE_VERSION}/docker-compose-\$(uname -s)-\$(uname -m)\" -o /usr/local/bin/docker-compose"
                     sh 'sudo chmod +x /usr/local/bin/docker-compose'
 
-                    // Execute Docker Compose up
+                    // Exécuter Docker Compose up
                     sh 'sudo docker-compose up -d'
                 }
             }
+        }
     }
-}
 }
