@@ -43,7 +43,6 @@ public class StockServiceImplTest {
 		assertEquals(stocks.size(), retrievedStocks.size());
 		assertEquals(stock.getLibelleStock(), retrievedStocks.get(0).getLibelleStock());
 	}
-
 	@Test
 	public void testAddStock() {
 		when(stockRepository.save(stock)).thenReturn(stock);
@@ -53,4 +52,67 @@ public class StockServiceImplTest {
 		assertNotNull(savedStock);
 		assertEquals(stock.getLibelleStock(), savedStock.getLibelleStock());
 	}
+
+	@Test
+	public void testDeleteStock() {
+		long stockId = 1L;
+
+		stockService.deleteStock(stockId);
+
+		verify(stockRepository, times(1)).deleteById(stockId);
+	}
+
+	@Test
+	public void testUpdateStock() {
+		Stock updatedStock = new Stock("updated stock", 20, 200);
+
+		when(stockRepository.save(updatedStock)).thenReturn(updatedStock);
+
+		Stock result = stockService.updateStock(updatedStock);
+
+		assertNotNull(result);
+		assertEquals(updatedStock.getLibelleStock(), result.getLibelleStock());
+		assertEquals(updatedStock.getQte(), result.getQte());
+		assertEquals(updatedStock.getQteMin(), result.getQteMin());
+	}
+
+	@Test
+	public void testRetrieveStock() {
+		long stockId = 1L;
+		Stock expectedStock = new Stock("test", 10, 100);
+
+		when(stockRepository.findById(stockId)).thenReturn(java.util.Optional.ofNullable(expectedStock));
+
+		Stock result = stockService.retrieveStock(stockId);
+
+		assertNotNull(result);
+		assertEquals(expectedStock.getLibelleStock(), result.getLibelleStock());
+		assertEquals(expectedStock.getQte(), result.getQte());
+		assertEquals(expectedStock.getQteMin(), result.getQteMin());
+	}
+
+	@Test
+	public void testRetrieveStatusStock() {
+		// Given
+		List<Stock> stocksEnRouge = new ArrayList<>();
+		Stock stock1 = new Stock("Stock1", 5, 10);
+		Stock stock2 = new Stock("Stock2", 8, 20);
+		stocksEnRouge.add(stock1);
+		stocksEnRouge.add(stock2);
+
+		when(stockRepository.retrieveStatusStock()).thenReturn(stocksEnRouge);
+
+		// When
+		String statusMessage = stockService.retrieveStatusStock();
+
+		// Then
+		assertNotNull(statusMessage);
+		assertTrue(statusMessage.contains("Stock1"));
+		assertTrue(statusMessage.contains("Stock2"));
+		assertTrue(statusMessage.contains("5"));
+		assertTrue(statusMessage.contains("8"));
+		assertTrue(statusMessage.contains("10"));
+		assertTrue(statusMessage.contains("20"));
+	}
+
 }
