@@ -34,12 +34,14 @@ pipeline {
                     -Dsonar.login=squ_41350b131d500a68162f170815a1a445e13f8b1c'
             }
         }
-    }
+
 
           stage('Deploy to Nexus') {
              steps {
                             sh 'mvn deploy -DskipTests'
                         }
                     }
+
+    }
 
 }
