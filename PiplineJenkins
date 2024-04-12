@@ -36,5 +36,13 @@ sh 'mvn test'
             }
         }
 
+         stage('Build Docker Image') {
+                    steps {
+                        script {
+                            docker.build('your-docker-image-name:latest', '-f Dockerfile .')
+                        }
+                    }
+                }
+
          }
 }
