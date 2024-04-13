@@ -58,9 +58,10 @@ pipeline {
         }
 
         stage('Push Docker Image to Docker Hub') {
-            steps {
-                sh 'docker push my-image'
-            }
-        }
+                    steps {
+                        // Push the tagged Docker image to Docker Hub
+                        sh 'docker push abidmehdi/my-image'
+                    }
+                }
     }
 }
