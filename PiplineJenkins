@@ -42,16 +42,27 @@ pipeline {
                 }
 
          stage('Build Docker Image') {
-                    steps {
-                        script {
-                          sh 'docker build -t malek/tpachatproject:1.0 .'
-                        }
-                    }
-                }
+            steps {
+                // Build the Docker image and tag it with the repository name
+                sh 'docker build -t malekzaidi/my-image:latest .'
+            }
+        }
 
-         }
+        stage('Login to Docker Hub') {
+            environment {
+                DOCKERHUB_CREDENTIALS_USR = 'malekzaidi'
+                DOCKERHUB_CREDENTIALS_PSW = 'mohamed 2 foi'
+            }
+            steps {
+                sh "echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin"
+            }
+        }
 
-
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                // Push the tagged Docker image to Docker Hub
+                sh 'docker push malekzaidi/my-image:latest'
+            }
+        }
     }
-
-
+}
