@@ -43,7 +43,8 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t my-image .'
+                // Build the Docker image and tag it with the repository name
+                sh 'docker build -t abidmehdi/my-image:latest .'
             }
         }
 
@@ -57,11 +58,11 @@ pipeline {
             }
         }
 
-       stage('Push Docker Image to Docker Hub') {
-                   steps {
-                       // Push the tagged Docker image to Docker Hub
-                       sh 'docker push abidmehdi/my-image:latest'
-                   }
-               }
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                // Push the tagged Docker image to Docker Hub
+                sh 'docker push abidmehdi/my-image:latest'
+            }
+        }
     }
 }
