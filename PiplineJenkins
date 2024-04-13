@@ -49,14 +49,14 @@ pipeline {
         }
 
         stage('Login to Docker Hub') {
-            environment {
-                DOCKERHUB_CREDENTIALS_USR = 'abidmehdi'
-                DOCKERHUB_CREDENTIALS_PSW = 'steryostn15'
-            }
             steps {
-                sh "echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin"
+                // Use Docker Hub credentials stored in Jenkins
+                withCredentials([usernamePassword(credentialsId: 'mehdiabid', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
+                    sh "docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}"
+                }
             }
         }
+
 
         stage('Push Docker Image to Docker Hub') {
             steps {
