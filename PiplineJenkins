@@ -47,5 +47,20 @@ pipeline {
             }
         }
 
+        stage('Login to Docker Hub') {
+            environment {
+                DOCKERHUB_CREDENTIALS_USR = 'abidmehdi'
+                DOCKERHUB_CREDENTIALS_PSW = 'steryostn15'
+            }
+            steps {
+                sh "echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin"
+            }
+        }
+
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                sh 'docker push my-image'
+            }
+        }
     }
 }
