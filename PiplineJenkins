@@ -64,5 +64,12 @@ pipeline {
                 sh 'docker push malekzaidi/my-image:latest'
             }
         }
+        stage('Deploy with Docker Compose') {
+                            steps {
+                                script {
+                                        sh 'docker-compose up -d'
+                                }
+                            }
+                        }
     }
 }
