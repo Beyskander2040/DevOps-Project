@@ -27,19 +27,19 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                sh 'mvn clean verify sonar:sonar \
-                    -Dsonar.host.url=http://192.168.1.14:9000 \
-                    -Dsonar.login=squ_41350b131d500a68162f170815a1a445e13f8b1c'
-            }
-        }
+       // stage('SonarQube Analysis') {
+            //steps {
+              //  sh 'mvn clean verify sonar:sonar \
+                 //   -Dsonar.host.url=http://192.168.1.14:9000 \
+                  //  -Dsonar.login=squ_41350b131d500a68162f170815a1a445e13f8b1c'
+         //   }
+      //  }
 
-        stage('Deploy to Nexus') {
-            steps {
-                sh 'mvn deploy -DskipTests'
-            }
-        }
+       // stage('Deploy to Nexus') {
+           // steps {
+               // sh 'mvn deploy -DskipTests'
+           // }
+       // }
 
         stage('Build Docker Image') {
             steps {
