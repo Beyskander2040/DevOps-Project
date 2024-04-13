@@ -619,3 +619,7 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'mehdi.reglement' doesn't exi
 2024-04-13 16:17:16.080  INFO 31588 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-04-13 16:17:16.080  INFO 31588 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 2024-04-13 16:17:16.153  INFO 31588 --- [http-nio-8089-exec-1] c.e.examen.services.StockServiceImpl     : In method addStock
+2024-04-13 18:15:05.585  INFO 31588 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-13 18:15:05.591  INFO 31588 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-04-13 18:15:05.665  INFO 31588 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-13 18:15:05.667  INFO 31588 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
