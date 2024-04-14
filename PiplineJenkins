@@ -60,14 +60,14 @@ pipeline {
             }
         }
 
-        stage('Login to Docker Hub') {
-            steps {
-                // Use Docker Hub credentials stored in Jenkins
-                withCredentials([usernamePassword(credentialsId: 'mehdiabid', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
-                    sh "docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}"
-                }
-            }
-        }
+     //   stage('Login to Docker Hub') {
+     //       steps {
+     //           // Use Docker Hub credentials stored in Jenkins
+     //           withCredentials([usernamePassword(credentialsId: 'mehdiabid', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
+     //               sh "docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}"
+     //           }
+     //       }
+     //   }
 
 
        // stage('Push Docker Image to Docker Hub') {
@@ -77,7 +77,7 @@ pipeline {
         //    }
       // }
 
-        stage('Deploy with Docker Compose') {
+       stage('Deploy with Docker Compose') {
                     steps {
                         script {
                             // Assurez-vous que vous êtes dans le répertoire contenant le fichier docker-compose.yml
