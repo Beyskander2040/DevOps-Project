@@ -5,8 +5,8 @@ services:
     image: mysql:latest
     container_name: projetdevops_mysqldb
     environment:
-      MYSQL_ROOT_PASSWORD: 123456789
-      MYSQL_DATABASE: springDB
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: tpachato
     ports:
       - "3306:3306"
 

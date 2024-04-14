@@ -70,12 +70,12 @@ pipeline {
         }
 
 
-        stage('Push Docker Image to Docker Hub') {
-            steps {
-                // Push the tagged Docker image to Docker Hub
-                sh 'docker push abidmehdi/my-image:latest'
-            }
-        }
+       // stage('Push Docker Image to Docker Hub') {
+        //    steps {
+        //        // Push the tagged Docker image to Docker Hub
+       //         sh 'docker push abidmehdi/my-image:latest'
+        //    }
+      // }
 
         stage('Deploy with Docker Compose') {
                     steps {
