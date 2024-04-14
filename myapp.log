@@ -3048,3 +3048,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 2024-04-12 13:10:24.864  INFO 15616 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
 2024-04-12 13:10:25.059  INFO 15616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8089 (http) with context path '/RevisionSpring'
 2024-04-12 13:10:25.398  INFO 15616 --- [restartedMain] c.e.examen.TpAchatProjectApplication     : Started TpAchatProjectApplication in 4.985 seconds (JVM running for 5.681)
+2024-04-12 21:52:24.939  WARN 15616 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h17m36s512ms619µs500ns).
+2024-04-12 22:07:23.609  INFO 15616 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-12 22:07:23.656  INFO 15616 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-12 22:07:52.749  INFO 15616 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
