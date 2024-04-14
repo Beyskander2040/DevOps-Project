@@ -38,20 +38,20 @@ pipeline {
            }
        }
 
-     //   stage('SonarQube Analysis') {
-     //       steps {
-     //          sh 'mvn clean verify sonar:sonar \
-     //              -Dsonar.host.url=http://192.168.1.7:9000 \
-     //               -Dsonar.login=squ_38e20cf8bc57c9b0462cd69a5a3a83529306a2d1'
-     //       }
-     //   }
-//
-       //         stage('Deploy to Nexus') {
-      //              steps {
-       //                 sh 'mvn deploy -DskipTests'
-       //             }
-        //        }
-//
+        stage('SonarQube Analysis') {
+            steps {
+               sh 'mvn clean verify sonar:sonar \
+                   -Dsonar.host.url=http://192.168.1.7:9000 \
+                    -Dsonar.login=squ_38e20cf8bc57c9b0462cd69a5a3a83529306a2d1'
+            }
+        }
+
+               stage('Deploy to Nexus') {
+                    steps {
+                        sh 'mvn deploy -DskipTests'
+                    }
+                }
+
          stage('Build Docker Image') {
             steps {
                 // Build the Docker image and tag it with the repository name
@@ -69,12 +69,12 @@ pipeline {
             }
         }
 
-     //   stage('Push Docker Image to Docker Hub') {
-     //       steps {
-     //          // Push the tagged Docker image to Docker Hub
-     //           sh 'docker push malekzaidi/my-image:latest'
-      //      }
-     //   }
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+               // Push the tagged Docker image to Docker Hub
+               sh 'docker push malekzaidi/my-image:latest'
+            }
+        }
         stage('Deploy with Docker Compose') {
                             steps {
                                 script {
