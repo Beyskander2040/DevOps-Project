@@ -20,12 +20,23 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+            stage('Maven Install') {
+                    steps {
+                        sh 'mvn install'
+                    }
+                }
 
-    //    stage('Tests - JUnit/Mockito') {
-     //       steps {
-     //           sh 'mvn test'
-     //       }
-     //   }
+        stage('Build package') {
+                    steps {
+                        sh 'mvn package'
+                    }
+                }
+
+        stage('Tests - JUnit/Mockito') {
+           steps {
+               sh 'mvn test'
+           }
+       }
 
      //   stage('SonarQube Analysis') {
      //       steps {
