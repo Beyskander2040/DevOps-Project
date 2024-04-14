@@ -39,19 +39,19 @@ pipeline {
             }
         }
 
-       // stage('SonarQube Analysis') {
-       //     steps {
-       //         sh 'mvn clean verify sonar:sonar \
-       //             -Dsonar.host.url=http://192.168.1.14:9000 \
-       //             -Dsonar.login=squ_41350b131d500a68162f170815a1a445e13f8b1c'
-       //     }
-       // }
+        stage('SonarQube Analysis') {
+            steps {
+                sh 'mvn clean verify sonar:sonar \
+                    -Dsonar.host.url=http://192.168.1.14:9000 \
+                    -Dsonar.login=squ_41350b131d500a68162f170815a1a445e13f8b1c'
+            }
+        }
 
-       // stage('Deploy to Nexus') {
-       //     steps {
-       //         sh 'mvn deploy -DskipTests'
-       //     }
-       // }
+        stage('Deploy to Nexus') {
+           steps {
+                sh 'mvn deploy -DskipTests'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
@@ -60,7 +60,7 @@ pipeline {
             }
         }
 
-        /* stage('Login to Docker Hub') {
+         stage('Login to Docker Hub') {
             steps {
                 // Use Docker Hub credentials stored in Jenkins
                withCredentials([usernamePassword(credentialsId: 'mehdiabid', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
@@ -75,7 +75,7 @@ pipeline {
                // Push the tagged Docker image to Docker Hub
                sh 'docker push abidmehdi/my-image:latest'
             }
-       } */
+       }
 
        stage('Deploy with Docker Compose') {
               steps {
