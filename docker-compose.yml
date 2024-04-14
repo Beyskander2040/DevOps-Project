@@ -13,7 +13,7 @@ services:
         "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/malek?useSSL=false",
         "spring.datasource.username" : "root",
         "spring.datasource.password" : "",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8InnoDBDialect",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8Dialect",
         "spring.jpa.hibernate.ddl-auto" : "create-drop"
       }'
     volumes:
