@@ -39,7 +39,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+       /* stage('SonarQube Analysis') {
             steps {
                 sh 'mvn clean verify sonar:sonar \
                     -Dsonar.host.url=http://192.168.1.14:9000 \
@@ -51,7 +51,7 @@ pipeline {
            steps {
                 sh 'mvn deploy -DskipTests'
             }
-        }
+        }*/
 
         stage('Build Docker Image') {
             steps {
@@ -60,7 +60,7 @@ pipeline {
             }
         }
 
-         stage('Login to Docker Hub') {
+       /*  stage('Login to Docker Hub') {
             steps {
                 // Use Docker Hub credentials stored in Jenkins
                withCredentials([usernamePassword(credentialsId: 'mehdiabid', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
@@ -75,7 +75,7 @@ pipeline {
                // Push the tagged Docker image to Docker Hub
                sh 'docker push abidmehdi/my-image:latest'
             }
-       }
+       }*/
 
        stage('Deploy with Docker Compose') {
               steps {
