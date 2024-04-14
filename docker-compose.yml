@@ -23,7 +23,7 @@ services:
     tty: true
 
   mysqldb:
-    image: mysql:5.7
+    image: mysql:latest
     restart: unless-stopped
     env_file: ./.env
     environment:
