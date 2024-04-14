@@ -22,7 +22,7 @@ services:
     tty: true
 
   mysqldb:
-    image: mysql:5.7
+    image: mysql:latest
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=123
