@@ -10,11 +10,11 @@ services:
       - "8089:8089"  # Update the port to match the one defined in application.properties
     environment:
       SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/mehdi?useSSL=false",
+        "spring.datasource.url"  : "jdbc:mysql://localhost:3306/malek?useSSL=false",
         "spring.datasource.username" : "root",
         "spring.datasource.password" : "",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "create-drop"  # Update to match the one defined in application.properties
+        "spring.jpa.hibernate.ddl-auto" : "create-drop"
       }'
     volumes:
       - .m2:/root/.m2
@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: "root_password"
-      MYSQL_DATABASE: "malek"  # Update to match the one defined in application.properties
+      MYSQL_DATABASE: "malek"
     ports:
       - "3306:3306"
     volumes:
