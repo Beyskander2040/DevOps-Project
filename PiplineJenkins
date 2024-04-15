@@ -37,7 +37,7 @@ pipeline {
                sh 'mvn test'
            }
        }
-
+/*
         stage('SonarQube Analysis') {
             steps {
                sh 'mvn clean verify sonar:sonar \
@@ -51,7 +51,7 @@ pipeline {
                         sh 'mvn deploy -DskipTests'
                     }
                 } 
-
+*/
          stage('Build Docker Image') {
             steps {
                 // Build the Docker image and tag it with the repository name
@@ -59,7 +59,7 @@ pipeline {
             }
         }
 
-        stage('Login to Docker Hub') {
+      /*  stage('Login to Docker Hub') {
             environment {
                 DOCKERHUB_CREDENTIALS_USR = 'malekzaidi'
                 DOCKERHUB_CREDENTIALS_PSW = 'mohamed 2 foi'
@@ -74,7 +74,7 @@ pipeline {
                // Push the tagged Docker image to Docker Hub
                sh 'docker push malekzaidi/my-image:latest'
             }
-        }
+        }*/
         stage('Deploy with Docker Compose') {
                             steps {
                                 script {
